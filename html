@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DreamPath Abroad & Gulf Consultancy - Expert guidance for studying abroad in USA, UK, Canada, Australia, Germany and Gulf work opportunities in UAE, Saudi Arabia, Qatar. Free consultation available.">
+    <meta name="keywords" content="study abroad, Gulf jobs, work in UAE, study in USA, student visa, work visa, Dubai jobs, scholarship, IELTS, overseas education, Qatar jobs, Saudi Arabia jobs">
+    <meta name="author" content="DreamPath Abroad & Gulf Consultancy">
+    <meta property="og:title" content="DreamPath Abroad & Gulf Consultancy | Study Abroad & Gulf Work">
+    <meta property="og:description" content="Your trusted partner for global education and Gulf career opportunities">
+    <meta property="og:type" content="website">
+    <title>DreamPath Abroad & Gulf Consultancy | Study Abroad & Gulf Work Opportunities</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        /* Gradient Backgrounds */
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Card Hover Effects */
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 20px rgba(37, 211, 102, 0.5);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse-whatsapp 2s infinite;
+        }
+        
+        @keyframes pulse-whatsapp {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.15);
+            background-color: #128c7e;
+        }
+        
+        /* Navbar */
+        .navbar {
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .mobile-menu.active {
+            max-height: 1000px;
+        }
+        
+        /* Accordion */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        
+        .accordion-content.active {
+            max-height: 800px;
+        }
+        
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .accordion-icon.active {
+            transform: rotate(180deg);
+        }
+        
+        /* Testimonial Carousel */
+        .testimonial-container {
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+        }
+        
+        .testimonial-container::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .testimonial-card {
+            scroll-snap-align: start;
+            min-width: 350px;
+        }
+        
+        @media (max-width: 768px) {
+            .testimonial-card {
+                min-width: 280px;
+            }
+        }
+        
+        /* Service Badge */
+        .service-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Loading Spinner for Form */
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 3px solid white;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/1234567890?text=Hello%20DreamPath!%20I%27m%20interested%20in%20your%20services" target="_blank" class="whatsapp-float" aria-label="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar fixed w-full top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="flex items-center justify-center w-12 h-12 bg-blue-600 rounded-full">
+                        <i class="fas fa-globe-americas text-white text-2xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl md:text-2xl font-bold text-blue-900">DreamPath Abroad & Gulf</h1>
+                        <p class="text-xs text-gray-600 hidden sm:block">Your Gateway to Global Education & Gulf Work</p>
+                    </div>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex space-x-6">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 font-medium transition">Home</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 font-medium transition">About</a>
+                    <a href="#services" class="nav-link text-gray-700 hover:text-blue-600 font-medium transition">Services</a>
+                    <a href="#destinations" class="nav-link text-gray-700 hover:text-blue-600 font-medium transition">Destinations</a>
+                    <a href="#scholarships" class="nav-link text-gray-700 hover:text-blue-600 font-medium transition">Scholarships</a>
+                    <a href="#testimonials" class="nav-link text-gray-700 hover:text-blue-600 font-medium transition">Testimonials</a>
+                    <a href="#faq" class="nav-link text-gray-700 hover:text-blue-600 font-medium transition">FAQ</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 font-medium transition">Contact</a>
+                </div>
+                
+                <!-- CTA Button -->
+                <div class="hidden lg:block">
+                    <a href="#contact" class="bg-blue-600 text-white px-6 py-2.5 rounded-full hover:bg-blue-700 transition font-semibold shadow-lg">
+                        Book Free Consultation
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="mobile-menu lg:hidden">
+                <div class="flex flex-col space-y-4 mt-6 pb-4">
+                    <a href="#home" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                    <a href="#about" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
+                    <a href="#services" class="text-gray-700 hover:text-blue-600 font-medium">Services</a>
+                    <a href="#destinations" class="text-gray-700 hover:text-blue-600 font-medium">Destinations</a>
+                    <a href="#scholarships" class="text-gray-700 hover:text-blue-600 font-medium">Scholarships</a>
+                    <a href="#testimonials" class="text-gray-700 hover:text-blue-600 font-medium">Testimonials</a>
+                    <a href="#faq" class="text-gray-700 hover:text-blue-600 font-medium">FAQ</a>
+                    <a href="#contact" class="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+                    <a href="#contact" class="bg-blue-600 text-white px-6 py-2.5 rounded-full text-center hover:bg-blue-700 font-semibold">
+                        Book Free Consultation
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient pt-32 pb-20 text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+                <!-- Hero Content -->
+                <div class="lg:w-1/2 fade-in-up">
+                    <div class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-white/30">
+                        <span class="text-sm font-semibold">🎓 Study Abroad + 💼 Gulf Work Opportunities</span>
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                        Your Gateway to Global Education & Gulf Careers
+                    </h1>
+                    <p class="text-xl mb-8 text-blue-100 leading-relaxed">
+                        Expert guidance for university admissions worldwide and premium job opportunities in UAE, Saudi Arabia, Qatar, and more. Transform your future with world-class education and lucrative Gulf careers.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 mb-10">
+                        <a href="#contact" class="bg-white text-blue-600 px-8 py-4 rounded-full font-bold hover:bg-gray-100 transition text-center shadow-2xl">
+                            <i class="fas fa-calendar-check mr-2"></i>Book Free Consultation
+                        </a>
+                        <a href="#services" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-blue-600 transition text-center">
+                            Explore Services
+                        </a>
+                    </div>
+                    
+                    <!-- Quick Services Overview -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20">
+                            <i class="fas fa-graduation-cap text-3xl mb-2"></i>
+                            <h3 class="font-bold">Study Abroad</h3>
+                            <p class="text-sm text-blue-100">USA, UK, Canada, Australia, Germany, Ireland</p>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20">
+                            <i class="fas fa-briefcase text-3xl mb-2"></i>
+                            <h3 class="font-bold">Gulf Work</h3>
+                            <p class="text-sm text-blue-100">UAE, Saudi Arabia, Qatar, Oman, Kuwait</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Lead Capture Form -->
+                <div class="lg:w-1/2">
+                    <div class="bg-white text-gray-800 p-8 rounded-3xl shadow-2xl">
+                        <h3 class="text-2xl font-bold mb-2 text-gray-800">Start Your Journey Today!</h3>
+                        <p class="text-gray-600 mb-6">Get expert guidance - 100% Free Consultation</p>
+                        <form id="hero-lead-form" class="space-y-4">
+                            <input type="text" name="name" placeholder="Full Name *" class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-blue-500 outline-none transition" required>
+                            <input type="email" name="email" placeholder="Email Address *" class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-blue-500 outline-none transition" required>
+                            <input type="tel" name="phone" placeholder="WhatsApp Number *" class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-blue-500 outline-none transition" required>
+                            <select name="interest" class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-blue-500 outline-none transition" required>
+                                <option value="">I'm interested in...</option>
+                                <option value="study">Study Abroad</option>
+                                <option value="gulf">Gulf Work Opportunities</option>
+                                <option value="both">Both Study & Work</option>
+                            </select>
+                            <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-4 rounded-xl font-bold hover:shadow-2xl transition text-lg">
+                                Get Free Consultation Now <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </form>
+                        <p class="text-xs text-gray-500 mt-4 text-center">
+                            <i class="fas fa-lock mr-1"></i>Your information is 100% secure and confidential
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="p-6">
+                    <div class="text-5xl font-bold text-blue-600 mb-2">8000+</div>
+                    <p class="text-gray-600 font-medium">Students Placed</p>
+                </div>
+                <div class="p-6">
+                    <div class="text-5xl font-bold text-blue-600 mb-2">98%</div>
+                    <p class="text-gray-600 font-medium">Visa Success Rate</p>
+                </div>
+                <div class="p-6">
+                    <div class="text-5xl font-bold text-blue-600 mb-2">5000+</div>
+                    <p class="text-gray-600 font-medium">Gulf Jobs Placed</p>
+                </div>
+                <div class="p-6">
+                    <div class="text-5xl font-bold text-blue-600 mb-2">15+</div>
+                    <p class="text-gray-600 font-medium">Countries Covered</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <!-- About Image -->
+                <div class="lg:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop" alt="Professional team consultation - DreamPath Consultancy" class="rounded-3xl shadow-2xl">
+                </div>
+                
+                <!-- About Content -->
+                <div class="lg:w-1/2">
+                    <div class="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full mb-4 font-semibold text-sm">
+                        About DreamPath
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+                        Your Trusted Partner for <span class="gradient-text">Global Success</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        DreamPath Abroad & Gulf Consultancy was founded with a dual mission: to make quality international education accessible to every deserving student and to connect skilled professionals with lucrative career opportunities in the Gulf region.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        With over 8,000 successful student placements and 5,000+ Gulf job placements, we've established ourselves as the most trusted consultancy for students and professionals seeking global opportunities. Our team of certified consultants brings decades of combined experience in overseas education and Gulf recruitment.
+                    </p>
+                    
+                    <!-- Feature Cards -->
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start gap-4 bg-white p-4 rounded-xl shadow-md">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-shield-alt text-green-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-1">100% Transparency</h4>
+                                <p class="text-gray-600 text-sm">No hidden charges. Clear pricing with pay-after-admission and pay-after-placement options available.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4 bg-white p-4 rounded-xl shadow-md">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-user-tie text-blue-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-1">Expert Counselors</h4>
+                                <p class="text-gray-600 text-sm">Certified education and career consultants with 15+ years of experience in their respective fields.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4 bg-white p-4 rounded-xl shadow-md">
+                            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-handshake text-purple-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-1">End-to-End Support</h4>
+                                <p class="text-gray-600 text-sm">From application to arrival, from job search to visa processing - we're with you every step of the way.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="inline-block bg-blue-600 text-white px-8 py-4 rounded-full font-bold hover:bg-blue-700 transition shadow-lg">
+                        Schedule a Meeting <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full mb-4 font-semibold text-sm">
+                    Our Services
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+                    Comprehensive Solutions for Your <span class="gradient-text">Global Dreams</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    From study abroad to Gulf careers, we offer end-to-end support for every stage of your journey
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-2xl shadow-lg card-hover border-2 border-green-200 relative">
+                    <span class="service-badge">Most Popular</span>
+                    <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mb-6 shadow-lg">
+                        <i class="fas fa-handshake text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Free Initial Consultation</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Get expert advice at zero cost. We assess your profile, understand your goals, and create a personalized roadmap for your study abroad or Gulf career journey.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Profile evaluation
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Goal assessment
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Custom roadmap
+                        </li>
+                    </ul>
+                    <div class="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-bold inline-block">
+                        100% Free
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover border-2 border-gray-200">
+                    <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mb-6 shadow-lg">
+                        <i class="fas fa-university text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">University & Course Selection</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Access 700+ universities worldwide including top institutions in USA, UK, Canada, Australia, Germany, Ireland, and Singapore.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                            700+ partner universities
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                            Personalized matching
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                            Career-aligned programs
+                        </li>
+                    </ul>
+                    <div class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-bold inline-block">
+                        Expert Guidance
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover border-2 border-gray-200">
+                    <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mb-6 shadow-lg">
+                        <i class="fas fa-file-alt text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Complete Application Assistance</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        We handle the entire application process on your behalf. From document preparation to submission tracking.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check-circle text-purple-500 mr-2"></i>
+                            Document preparation
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check-circle text-purple-500 mr-2"></i>
+                            Application submission
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check-circle text-purple-500 mr-2"></i>
+                            Follow-up & tracking
+                        </li>
+                    </ul>
+                    <div class="bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-bold inline-block">
+                        Hassle-Free Process
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="bg-gradient-to-br from-yellow-50 to-orange-50 p-8 rounded-2xl shadow-lg card-hover border-2 border-yellow-200 relative">
+                    <span class="service-badge">Premium Service</span>
+                    <div class="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center mb-6 shadow-lg">
+                        <i class="fas fa-pen-fancy text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">SOP/LOR/Essay Writing</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Premium service with professional writers. Compelling SOPs, powerful LORs, and winning essays that get you admitted.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check-circle text-yellow-600 mr-2"></i>
+                            Professional writers
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check-circle text-yellow-600 mr-2"></i>
+                            Unlimited revisions
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check-circle text-yellow-600 mr-2"></i>
+                            University-specific
+                        </li>
+                    </ul>
+                    <div class="bg-yellow-100 text-yellow-800
