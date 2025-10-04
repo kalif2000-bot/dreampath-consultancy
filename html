@@ -84,7 +84,7 @@
         }
         
         .whatsapp-float:hover {
-            transform: scale(1.15);
+            transform: scale(1.15) !important;
             background-color: #128c7e;
         }
         
@@ -130,8 +130,11 @@
         
         /* Testimonial Carousel */
         .testimonial-container {
+            display: flex;
+            overflow-x: auto;
             scroll-snap-type: x mandatory;
             scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
         }
         
         .testimonial-container::-webkit-scrollbar {
@@ -140,12 +143,19 @@
         
         .testimonial-card {
             scroll-snap-align: start;
-            min-width: 350px;
+            min-width: 100%;
+            padding: 0 10px;
         }
         
-        @media (max-width: 768px) {
+        @media (min-width: 640px) {
             .testimonial-card {
-                min-width: 280px;
+                min-width: 50%;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .testimonial-card {
+                min-width: 33.333%;
             }
         }
         
@@ -187,11 +197,51 @@
             width: 20px;
             height: 20px;
             animation: spin 1s linear infinite;
+            display: inline-block;
         }
         
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
+        }
+        
+        /* Image Hover Effects */
+        .img-hover {
+            transition: transform 0.5s ease;
+        }
+        
+        .img-hover:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Responsive Images */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Success/Error Messages */
+        .message {
+            display: none;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .message.success {
+            background-color: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
+        }
+        
+        .message.error {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+        }
+        
+        .message.show {
+            display: block;
         }
     </style>
 </head>
@@ -245,14 +295,14 @@
             <!-- Mobile Menu -->
             <div id="mobile-menu" class="mobile-menu lg:hidden">
                 <div class="flex flex-col space-y-4 mt-6 pb-4">
-                    <a href="#home" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
-                    <a href="#about" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
-                    <a href="#services" class="text-gray-700 hover:text-blue-600 font-medium">Services</a>
-                    <a href="#destinations" class="text-gray-700 hover:text-blue-600 font-medium">Destinations</a>
-                    <a href="#scholarships" class="text-gray-700 hover:text-blue-600 font-medium">Scholarships</a>
-                    <a href="#testimonials" class="text-gray-700 hover:text-blue-600 font-medium">Testimonials</a>
-                    <a href="#faq" class="text-gray-700 hover:text-blue-600 font-medium">FAQ</a>
-                    <a href="#contact" class="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+                    <a href="#home" class="mobile-nav-link text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                    <a href="#about" class="mobile-nav-link text-gray-700 hover:text-blue-600 font-medium">About</a>
+                    <a href="#services" class="mobile-nav-link text-gray-700 hover:text-blue-600 font-medium">Services</a>
+                    <a href="#destinations" class="mobile-nav-link text-gray-700 hover:text-blue-600 font-medium">Destinations</a>
+                    <a href="#scholarships" class="mobile-nav-link text-gray-700 hover:text-blue-600 font-medium">Scholarships</a>
+                    <a href="#testimonials" class="mobile-nav-link text-gray-700 hover:text-blue-600 font-medium">Testimonials</a>
+                    <a href="#faq" class="mobile-nav-link text-gray-700 hover:text-blue-600 font-medium">FAQ</a>
+                    <a href="#contact" class="mobile-nav-link text-gray-700 hover:text-blue-600 font-medium">Contact</a>
                     <a href="#contact" class="bg-blue-600 text-white px-6 py-2.5 rounded-full text-center hover:bg-blue-700 font-semibold">
                         Book Free Consultation
                     </a>
@@ -287,12 +337,12 @@
                     
                     <!-- Quick Services Overview -->
                     <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20">
+                        <div class="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20 hover:bg-white/20 transition">
                             <i class="fas fa-graduation-cap text-3xl mb-2"></i>
                             <h3 class="font-bold">Study Abroad</h3>
                             <p class="text-sm text-blue-100">USA, UK, Canada, Australia, Germany, Ireland</p>
                         </div>
-                        <div class="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20">
+                        <div class="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20 hover:bg-white/20 transition">
                             <i class="fas fa-briefcase text-3xl mb-2"></i>
                             <h3 class="font-bold">Gulf Work</h3>
                             <p class="text-sm text-blue-100">UAE, Saudi Arabia, Qatar, Oman, Kuwait</p>
@@ -301,8 +351,8 @@
                 </div>
                 
                 <!-- Lead Capture Form -->
-                <div class="lg:w-1/2">
-                    <div class="bg-white text-gray-800 p-8 rounded-3xl shadow-2xl">
+                <div class="lg:w-1/2 w-full">
+                    <div class="bg-white text-gray-800 p-6 md:p-8 rounded-3xl shadow-2xl">
                         <h3 class="text-2xl font-bold mb-2 text-gray-800">Start Your Journey Today!</h3>
                         <p class="text-gray-600 mb-6">Get expert guidance - 100% Free Consultation</p>
                         <form id="hero-lead-form" class="space-y-4">
@@ -316,8 +366,9 @@
                                 <option value="both">Both Study & Work</option>
                             </select>
                             <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-4 rounded-xl font-bold hover:shadow-2xl transition text-lg">
-                                Get Free Consultation Now <i class="fas fa-arrow-right ml-2"></i>
+                                <span class="button-text">Get Free Consultation Now <i class="fas fa-arrow-right ml-2"></i></span>
                             </button>
+                            <div class="message" id="hero-form-message"></div>
                         </form>
                         <p class="text-xs text-gray-500 mt-4 text-center">
                             <i class="fas fa-lock mr-1"></i>Your information is 100% secure and confidential
@@ -331,22 +382,22 @@
     <!-- Stats Section -->
     <section class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div class="p-6">
-                    <div class="text-5xl font-bold text-blue-600 mb-2">8000+</div>
-                    <p class="text-gray-600 font-medium">Students Placed</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 text-center">
+                <div class="p-4 md:p-6">
+                    <div class="text-3xl md:text-5xl font-bold text-blue-600 mb-2">8000+</div>
+                    <p class="text-sm md:text-base text-gray-600 font-medium">Students Placed</p>
                 </div>
-                <div class="p-6">
-                    <div class="text-5xl font-bold text-blue-600 mb-2">98%</div>
-                    <p class="text-gray-600 font-medium">Visa Success Rate</p>
+                <div class="p-4 md:p-6">
+                    <div class="text-3xl md:text-5xl font-bold text-blue-600 mb-2">98%</div>
+                    <p class="text-sm md:text-base text-gray-600 font-medium">Visa Success Rate</p>
                 </div>
-                <div class="p-6">
-                    <div class="text-5xl font-bold text-blue-600 mb-2">5000+</div>
-                    <p class="text-gray-600 font-medium">Gulf Jobs Placed</p>
+                <div class="p-4 md:p-6">
+                    <div class="text-3xl md:text-5xl font-bold text-blue-600 mb-2">5000+</div>
+                    <p class="text-sm md:text-base text-gray-600 font-medium">Gulf Jobs Placed</p>
                 </div>
-                <div class="p-6">
-                    <div class="text-5xl font-bold text-blue-600 mb-2">15+</div>
-                    <p class="text-gray-600 font-medium">Countries Covered</p>
+                <div class="p-4 md:p-6">
+                    <div class="text-3xl md:text-5xl font-bold text-blue-600 mb-2">15+</div>
+                    <p class="text-sm md:text-base text-gray-600 font-medium">Countries Covered</p>
                 </div>
             </div>
         </div>
@@ -357,54 +408,56 @@
         <div class="container mx-auto px-4">
             <div class="flex flex-col lg:flex-row items-center gap-12">
                 <!-- About Image -->
-                <div class="lg:w-1/2">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop" alt="Professional team consultation - DreamPath Consultancy" class="rounded-3xl shadow-2xl">
+                <div class="lg:w-1/2 w-full">
+                    <div class="overflow-hidden rounded-3xl shadow-2xl">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800'%3E%3Crect fill='%23f0f0f0' width='1200' height='800'/%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop" alt="Professional team consultation - DreamPath Consultancy" class="w-full h-auto img-hover lazyload">
+                    </div>
                 </div>
                 
                 <!-- About Content -->
-                <div class="lg:w-1/2">
+                <div class="lg:w-1/2 w-full">
                     <div class="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full mb-4 font-semibold text-sm">
                         About DreamPath
                     </div>
-                    <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+                    <h2 class="text-3xl md:text-5xl font-bold text-gray-800 mb-6">
                         Your Trusted Partner for <span class="gradient-text">Global Success</span>
                     </h2>
-                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                    <p class="text-base md:text-lg text-gray-600 mb-6 leading-relaxed">
                         DreamPath Abroad & Gulf Consultancy was founded with a dual mission: to make quality international education accessible to every deserving student and to connect skilled professionals with lucrative career opportunities in the Gulf region.
                     </p>
-                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                        With over 8,000 successful student placements and 5,000+ Gulf job placements, we've established ourselves as the most trusted consultancy for students and professionals seeking global opportunities. Our team of certified consultants brings decades of combined experience in overseas education and Gulf recruitment.
+                    <p class="text-base md:text-lg text-gray-600 mb-8 leading-relaxed">
+                        With over 8,000 successful student placements and 5,000+ Gulf job placements, we've established ourselves as the most trusted consultancy for students and professionals seeking global opportunities.
                     </p>
                     
                     <!-- Feature Cards -->
                     <div class="space-y-4 mb-8">
-                        <div class="flex items-start gap-4 bg-white p-4 rounded-xl shadow-md">
+                        <div class="flex items-start gap-4 bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition">
                             <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
                                 <i class="fas fa-shield-alt text-green-600 text-xl"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold text-gray-800 mb-1">100% Transparency</h4>
-                                <p class="text-gray-600 text-sm">No hidden charges. Clear pricing with pay-after-admission and pay-after-placement options available.</p>
+                                <p class="text-gray-600 text-sm">No hidden charges. Clear pricing with pay-after-admission and pay-after-placement options.</p>
                             </div>
                         </div>
                         
-                        <div class="flex items-start gap-4 bg-white p-4 rounded-xl shadow-md">
+                        <div class="flex items-start gap-4 bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition">
                             <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
                                 <i class="fas fa-user-tie text-blue-600 text-xl"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold text-gray-800 mb-1">Expert Counselors</h4>
-                                <p class="text-gray-600 text-sm">Certified education and career consultants with 15+ years of experience in their respective fields.</p>
+                                <p class="text-gray-600 text-sm">Certified consultants with 15+ years of experience in education and Gulf recruitment.</p>
                             </div>
                         </div>
                         
-                        <div class="flex items-start gap-4 bg-white p-4 rounded-xl shadow-md">
+                        <div class="flex items-start gap-4 bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition">
                             <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
                                 <i class="fas fa-handshake text-purple-600 text-xl"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold text-gray-800 mb-1">End-to-End Support</h4>
-                                <p class="text-gray-600 text-sm">From application to arrival, from job search to visa processing - we're with you every step of the way.</p>
+                                <p class="text-gray-600 text-sm">From application to arrival, we're with you every step of the way.</p>
                             </div>
                         </div>
                     </div>
@@ -424,35 +477,35 @@
                 <div class="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full mb-4 font-semibold text-sm">
                     Our Services
                 </div>
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-800 mb-4">
                     Comprehensive Solutions for Your <span class="gradient-text">Global Dreams</span>
                 </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
                     From study abroad to Gulf careers, we offer end-to-end support for every stage of your journey
                 </p>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 <!-- Service 1 -->
-                <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-2xl shadow-lg card-hover border-2 border-green-200 relative">
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-6 md:p-8 rounded-2xl shadow-lg card-hover border-2 border-green-200 relative">
                     <span class="service-badge">Most Popular</span>
                     <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mb-6 shadow-lg">
                         <i class="fas fa-handshake text-3xl text-white"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Free Initial Consultation</h3>
+                    <h3 class="text-xl md:text-2xl font-bold mb-4 text-gray-800">Free Initial Consultation</h3>
                     <p class="text-gray-600 mb-6 leading-relaxed">
-                        Get expert advice at zero cost. We assess your profile, understand your goals, and create a personalized roadmap for your study abroad or Gulf career journey.
+                        Get expert advice at zero cost. We assess your profile and create a personalized roadmap.
                     </p>
                     <ul class="space-y-2 mb-6">
-                        <li class="flex items-center text-gray-700">
+                        <li class="flex items-center text-gray-700 text-sm md:text-base">
                             <i class="fas fa-check-circle text-green-500 mr-2"></i>
                             Profile evaluation
                         </li>
-                        <li class="flex items-center text-gray-700">
+                        <li class="flex items-center text-gray-700 text-sm md:text-base">
                             <i class="fas fa-check-circle text-green-500 mr-2"></i>
                             Goal assessment
                         </li>
-                        <li class="flex items-center text-gray-700">
+                        <li class="flex items-center text-gray-700 text-sm md:text-base">
                             <i class="fas fa-check-circle text-green-500 mr-2"></i>
                             Custom roadmap
                         </li>
@@ -463,26 +516,26 @@
                 </div>
                 
                 <!-- Service 2 -->
-                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover border-2 border-gray-200">
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg card-hover border-2 border-gray-200">
                     <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mb-6 shadow-lg">
                         <i class="fas fa-university text-3xl text-white"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-gray-800">University & Course Selection</h3>
+                    <h3 class="text-xl md:text-2xl font-bold mb-4 text-gray-800">University & Course Selection</h3>
                     <p class="text-gray-600 mb-6 leading-relaxed">
-                        Access 700+ universities worldwide including top institutions in USA, UK, Canada, Australia, Germany, Ireland, and Singapore.
+                        Access 700+ universities worldwide including USA, UK, Canada, Australia, Germany, Ireland, Singapore.
                     </p>
                     <ul class="space-y-2 mb-6">
-                        <li class="flex items-center text-gray-700">
+                        <li class="flex items-center text-gray-700 text-sm md:text-base">
                             <i class="fas fa-check-circle text-blue-500 mr-2"></i>
-                            700+ partner universities
+                            700+ universities
                         </li>
-                        <li class="flex items-center text-gray-700">
+                        <li class="flex items-center text-gray-700 text-sm md:text-base">
                             <i class="fas fa-check-circle text-blue-500 mr-2"></i>
-                            Personalized matching
+                            Perfect matching
                         </li>
-                        <li class="flex items-center text-gray-700">
+                        <li class="flex items-center text-gray-700 text-sm md:text-base">
                             <i class="fas fa-check-circle text-blue-500 mr-2"></i>
-                            Career-aligned programs
+                            Career-aligned
                         </li>
                     </ul>
                     <div class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-bold inline-block">
@@ -491,55 +544,12 @@
                 </div>
                 
                 <!-- Service 3 -->
-                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover border-2 border-gray-200">
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg card-hover border-2 border-gray-200">
                     <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mb-6 shadow-lg">
                         <i class="fas fa-file-alt text-3xl text-white"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Complete Application Assistance</h3>
+                    <h3 class="text-xl md:text-2xl font-bold mb-4 text-gray-800">Application Assistance</h3>
                     <p class="text-gray-600 mb-6 leading-relaxed">
-                        We handle the entire application process on your behalf. From document preparation to submission tracking.
+                        We handle the entire application process. Document prep to submission tracking.
                     </p>
                     <ul class="space-y-2 mb-6">
-                        <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check-circle text-purple-500 mr-2"></i>
-                            Document preparation
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check-circle text-purple-500 mr-2"></i>
-                            Application submission
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check-circle text-purple-500 mr-2"></i>
-                            Follow-up & tracking
-                        </li>
-                    </ul>
-                    <div class="bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-bold inline-block">
-                        Hassle-Free Process
-                    </div>
-                </div>
-                
-                <!-- Service 4 -->
-                <div class="bg-gradient-to-br from-yellow-50 to-orange-50 p-8 rounded-2xl shadow-lg card-hover border-2 border-yellow-200 relative">
-                    <span class="service-badge">Premium Service</span>
-                    <div class="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center mb-6 shadow-lg">
-                        <i class="fas fa-pen-fancy text-3xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-gray-800">SOP/LOR/Essay Writing</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        Premium service with professional writers. Compelling SOPs, powerful LORs, and winning essays that get you admitted.
-                    </p>
-                    <ul class="space-y-2 mb-6">
-                        <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check-circle text-yellow-600 mr-2"></i>
-                            Professional writers
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check-circle text-yellow-600 mr-2"></i>
-                            Unlimited revisions
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check-circle text-yellow-600 mr-2"></i>
-                            University-specific
-                        </li>
-                    </ul>
-                    <div class="bg-yellow-100 text-yellow-800
